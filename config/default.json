@@ -1,3 +1,4 @@
 {
-    "MONGO_URI": "mongodb+srv://firered322:firered322@cluster0.sxn8g.mongodb.net/test?retryWrites=true&w=majority"
+  "MONGO_URI": "mongodb+srv://firered322:firered322@cluster0.sxn8g.mongodb.net/test?retryWrites=true&w=majority",
+  "JWT_SECRET": "jwtsecret"
 }
