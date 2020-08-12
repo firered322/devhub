@@ -60,7 +60,7 @@ router.post(
 
       await user.save();
 
-      // jwt auth
+      // jwt token generation
       const payload = {
         user: {
           id: user.id,
@@ -73,6 +73,7 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
+          // respond with the token for the new user
           res.json({ token });
         }
       );
