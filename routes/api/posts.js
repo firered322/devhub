@@ -167,12 +167,14 @@ router.post(
   [auth, [check("text", "Please enter the text").not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
     try {
       const user = await User.findById(req.user.id).select("-password");
+
       const post = await Post.findById(req.params.id);
 
       const newComment = {
@@ -200,8 +202,11 @@ router.post(
 router.delete("/comment/:id/:commentId", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+
     // pull comment from the post
-    const comment = post.comments.find((comment) => comment.id === req.params.commentId);
+    const comment = post.comments.find(
+      (comment) => comment.id === req.params.commentId
+    );
 
     // ensure comment exists
     if (!comment) {
